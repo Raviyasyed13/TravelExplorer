@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Destination Details</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+body{
+background:#f4f7fb;
+}
+
+header{
+background:#2c5364;
+color:white;
+padding:15px;
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+}
+
+nav a{
+color:white;
+margin:8px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.container{
+max-width:1000px;
+margin:30px auto;
+background:white;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 0 15px rgba(0,0,0,0.1);
+transition:.3s;
+}
+
+.container:hover{
+transform:translateY(-5px);
+}
+
+.container img{
+width:100%;
+height:350px;
+object-fit:cover;
+}
+
+.content{
+padding:20px;
+}
+
+.content h2{
+margin-bottom:10px;
+}
+
+.content p{
+color:gray;
+line-height:1.6;
+margin-bottom:15px;
+}
+
+.btn{
+display:inline-block;
+margin:8px 8px 0 0;
+padding:10px 15px;
+background:#2c5364;
+color:white;
+text-decoration:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+.btn:hover{
+background:#1b3b48;
+}
+
+.info{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:15px;
+margin-top:20px;
+}
+
+.box{
+background:#f4f7fb;
+padding:15px;
+border-radius:8px;
+text-align:center;
+}
+
+footer{
+background:#222;
+color:white;
+text-align:center;
+padding:15px;
+margin-top:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h2>🌍 Destination Details</h2>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="destinations.html">Destinations</a>
+<a href="packages.html">Packages</a>
+<a href="wishlist.html">Wishlist</a>
+<a href="contact.html">Contact</a>
+</nav>
+
+</header>
+
+<div class="container">
+
+<img id="placeImg" src="">
+
+<div class="content">
+
+<h2 id="placeTitle"></h2>
+
+<p id="placeDesc"></p>
+
+<a id="packageBtn" class="btn">Suggested Packages</a>
+<button class="btn" onclick="addWishlist()">Add to Wishlist</button>
+
+<div class="info">
+
+<div class="box">
+<h4>Best Time</h4>
+<p id="bestTime"></p>
+</div>
+
+<div class="box">
+<h4>Famous For</h4>
+<p id="famousFor"></p>
+</div>
+
+<div class="box">
+<h4>Budget</h4>
+<p id="budget"></p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<footer>
+© 2026 Travel Explorer
+</footer>
+
+<script>
+
+const data = {
+
+paris:{
+title:"Paris, France",
+img:"https://images.unsplash.com/photo-1528127269322-539801943592",
+desc:"Paris is famous for Eiffel Tower, cafes, museums, art and romantic atmosphere.",
+time:"April to June",
+famous:"Eiffel Tower, Louvre, Cafes",
+budget:"₹1,20,000 approx",
+country:"france"
+},
+
+dubai:{
+title:"Dubai, UAE",
+img:"https://images.unsplash.com/photo-1512453979798-5ea266f8880c",
+desc:"Dubai offers luxury shopping, desert safari, Burj Khalifa and modern attractions.",
+time:"Nov to March",
+famous:"Burj Khalifa, Desert Safari",
+budget:"₹90,000 approx",
+country:"dubai"
+},
+
+bali:{
+title:"Bali, Indonesia",
+img:"https://images.unsplash.com/photo-1505761671935-60b3a7427bad",
+desc:"Bali is known for beaches, temples, waterfalls and peaceful resorts.",
+time:"April to Oct",
+famous:"Beaches, Temples",
+budget:"₹70,000 approx",
+country:"indonesia"
+},
+
+switzerland:{
+title:"Switzerland",
+img:"https://images.unsplash.com/photo-1501785888041-af3ef285b470",
+desc:"Switzerland offers snow mountains, train rides and beautiful landscapes.",
+time:"Dec to Feb",
+famous:"Alps, Snow, Trains",
+budget:"₹2,00,000 approx",
+country:"switzerland"
+}
+
+};
+
+const params = new URLSearchParams(window.location.search);
+const place = params.get("place");
+
+const item = data[place];
+
+document.getElementById("placeImg").src = item.img;
+document.getElementById("placeTitle").innerText = item.title;
+document.getElementById("placeDesc").innerText = item.desc;
+document.getElementById("bestTime").innerText = item.time;
+document.getElementById("famousFor").innerText = item.famous;
+document.getElementById("budget").innerText = item.budget;
+
+document.getElementById("packageBtn").href =
+"packages.html?country=" + item.country;
+
+function addWishlist(){
+let list = JSON.parse(localStorage.getItem("wishlist")) || [];
+list.push(item.title);
+localStorage.setItem("wishlist", JSON.stringify(list));
+alert("Added to wishlist");
+}
+
+</script>
+
+</body>
+</html>

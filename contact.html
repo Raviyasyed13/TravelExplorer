@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Contact Our Team</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+font-family:Arial;
+margin:0;
+background:#f4f7fb;
+}
+
+/* Header */
+header{
+background:#2c5364;
+color:white;
+padding:12px;
+text-align:center;
+}
+
+nav a{
+color:white;
+margin:8px;
+text-decoration:none;
+font-weight:bold;
+}
+
+/* Team Grid */
+.team{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+padding:15px;
+background:#eaf3ff;
+}
+
+/* Card */
+.card{
+background:white;
+padding:15px;
+border-radius:8px;
+text-align:center;
+box-shadow:0 0 8px rgba(0,0,0,0.1);
+transition: all 0.3s ease;
+}
+
+/* Hover Effect */
+.card:hover{
+transform: translateY(-8px) scale(1.03);
+box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Image */
+.card img{
+width:100px;
+height:100px;
+border-radius:50%;
+object-fit:cover;
+background:#eee;
+margin-bottom:8px;
+transition: transform 0.3s ease;
+}
+
+.card:hover img{
+transform: scale(1.1);
+}
+
+.info{
+text-align:left;
+font-size:14px;
+}
+
+/* Mentor Full Width */
+.mentor{
+grid-column:1 / -1;
+display:flex;
+align-items:center;
+gap:20px;
+text-align:left;
+background:#fff4e6;
+border:2px solid #ff9800;
+}
+
+.mentor img{
+width:130px;
+height:130px;
+}
+
+.mentor .text{
+flex:1;
+}
+
+.desc{
+margin-top:8px;
+font-size:14px;
+color:gray;
+}
+
+footer{
+background:#222;
+color:white;
+text-align:center;
+padding:8px;
+font-size:14px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h2>📞 Contact Our Team</h2>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="destinations.html">Destinations</a>
+<a href="packages.html">Packages</a>
+<a href="contact.html">Contact</a>
+<a href="policy.html">Policy</a>
+</nav>
+</header>
+
+<div class="team">
+
+<!-- Member 1 -->
+<div class="card">
+<img src="images/aliza.jpeg">
+<h3>Aliza Iram</h3>
+<div class="info">
+<p><b>Phone:</b> 9270583907</p>
+<p><b>Email:</b> aliza@gmail.com</p>
+</div>
+</div>
+
+<!-- Member 2 -->
+<div class="card">
+<img src="images/raviya.jpeg">
+<h3>Raviya Absar</h3>
+<div class="info">
+<p><b>Phone:</b> 8208457904</p>
+<p><b>Email:</b> raviya@gmail.com</p>
+</div>
+</div>
+
+<!-- Member 3 -->
+<div class="card">
+<img src="images/prachi.jpeg">
+<h3>Prachi Khonde</h3>
+<div class="info">
+<p><b>Phone:</b> 9356109173</p>
+<p><b>Email:</b> prachi@gmail.com</p>
+</div>
+</div>
+
+<!-- Member 4 -->
+<div class="card">
+<img src="images/aachal.jpeg">
+<h3>Aachal Thakare</h3>
+<div class="info">
+<p><b>Phone:</b> 9307582016</p>
+<p><b>Email:</b> aachal@gmail.com</p>
+</div>
+</div>
+
+<!-- Member 5 -->
+<div class="card">
+<img src="images/krutika.jpeg">
+<h3>Krutika Chavan</h3>
+<div class="info">
+<p><b>Phone:</b> 8799996166</p>
+<p><b>Email:</b> krutika@gmail.com</p>
+</div>
+</div>
+
+<!-- Member 6 -->
+<div class="card">
+<img src="images/krushnali.jpeg">
+<h3>Krushnali Bhalerao</h3>
+<div class="info">
+<p><b>Phone:</b> 9209310080</p>
+<p><b>Email:</b> krushnali@gmail.com</p>
+</div>
+</div>
+
+<!-- Mentor -->
+<div class="card mentor">
+
+<img src="images/kasar.png">
+
+<div class="text">
+
+<h3>Prof. B V Kasar</h3>
+<h4>Project Mentor</h4>
+
+<div class="info">
+<p><b>Department:</b> Computer Science And Engineering</p>
+<p><b>Role:</b> Project Guide</p>
+<p><b>Phone:</b> 9730028116</p>
+<p><b>Email:</b> bvkasar@potepatilengg.ac.in</p>
+</div>
+
+<p class="desc">
+She guided our Travel Explorer project and helped us in planning,
+designing and developing the complete website successfully.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<footer>
+© 2026 Travel Website | Team Contacts
+</footer>
+
+</body>
+</html>

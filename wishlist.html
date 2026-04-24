@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Wishlist</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+font-family:Arial;
+margin:0;
+background:#f4f7fb;
+}
+
+header{
+background:#2c5364;
+color:white;
+padding:15px;
+display:flex;
+justify-content:space-between;
+}
+
+nav a{
+color:white;
+margin:10px;
+text-decoration:none;
+}
+
+.container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+padding:20px;
+}
+
+.card{
+background:white;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+text-align:center;
+padding-bottom:10px;
+}
+
+.card img{
+width:100%;
+height:180px;
+object-fit:cover;
+}
+
+.btn{
+display:inline-block;
+margin:5px;
+padding:8px 12px;
+background:#2c5364;
+color:white;
+text-decoration:none;
+border-radius:5px;
+border:none;
+cursor:pointer;
+}
+
+.remove{
+background:red;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h2>❤️ My Wishlist</h2>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="destinations.html">Destinations</a>
+<a href="packages.html">Packages</a>
+<a href="contact.html">Contact</a>
+</nav>
+
+</header>
+
+<div class="container" id="list"></div>
+
+<script>
+
+let wish=JSON.parse(localStorage.getItem("wishlist")) || [];
+
+let html="";
+
+wish.forEach(place=>{
+
+html+=`
+<div class="card">
+
+<img src="https://picsum.photos/400/300?random=${Math.random()}">
+
+<h3>${place}</h3>
+
+<a href="destination.html?place=${place}" class="btn">Details</a>
+
+<a href="packages.html" class="btn">Book Now</a>
+
+<button class="btn remove" onclick="removePlace('${place}')">Remove</button>
+
+</div>
+`;
+
+});
+
+document.getElementById("list").innerHTML = html;
+
+function removePlace(place){
+
+wish = wish.filter(p => p !== place);
+
+localStorage.setItem("wishlist", JSON.stringify(wish));
+
+location.reload();
+
+}
+
+</script>
+
+</body>
+</html>

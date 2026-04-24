@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>About Us</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+font-family:Arial;
+margin:0;
+background:#f4f7fb;
+}
+
+header{
+background:#2c5364;
+color:white;
+padding:15px;
+text-align:center;
+}
+
+.container{
+width:90%;
+margin:auto;
+padding:20px;
+}
+
+.box{
+background:white;
+padding:20px;
+margin-bottom:20px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+.rating-box{
+text-align:center;
+}
+
+.star{
+font-size:28px;
+color:gold;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:15px;
+}
+
+.card{
+background:#f8fbff;
+padding:15px;
+border-radius:8px;
+text-align:center;
+}
+
+h2{
+margin-top:0;
+color:#2c5364;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h2> About Our Travel Website</h2>
+</header>
+
+<div class="container">
+
+<div class="box">
+<h2>Who We Are</h2>
+<p>
+We are a professional travel booking platform offering international and domestic
+tour packages. Our website helps users explore destinations, compare packages,
+book trips and share their travel experience.
+</p>
+
+<p>
+We provide trips for Paris, Dubai, London, Bali, Switzerland, Maldives,
+Turkey, Japan, Singapore, New York and many more countries.
+</p>
+</div>
+
+<div class="box">
+<h2>Our Services</h2>
+
+<div class="grid">
+
+<div class="card">✈ Flight Booking</div>
+<div class="card">🏨 Hotel Reservation</div>
+<div class="card">🚗 Local Transport</div>
+<div class="card">📦 Custom Packages</div>
+<div class="card">🗺 Tour Guide</div>
+<div class="card">💳 Secure Payment</div>
+
+</div>
+
+</div>
+
+<div class="box">
+<h2>Why Choose Us</h2>
+
+<ul>
+<li>Best Price Guarantee</li>
+<li>International Destinations</li>
+<li>Trusted Travel Packages</li>
+<li>Customer Reviews & Ratings</li>
+<li>24/7 Support</li>
+<li>Secure Booking System</li>
+</ul>
+
+</div>
+
+<div class="box">
+<h2>Popular Destinations</h2>
+
+<div class="grid">
+
+<div class="card">Paris</div>
+<div class="card">Dubai</div>
+<div class="card">Bali</div>
+<div class="card">London</div>
+<div class="card">Maldives</div>
+<div class="card">Switzerland</div>
+<div class="card">Japan</div>
+<div class="card">Turkey</div>
+
+</div>
+
+</div>
+
+<div class="box rating-box">
+
+<h2>Customer Rating</h2>
+
+<div id="stars"></div>
+
+<h3 id="avg"></h3>
+
+<p id="total"></p>
+
+</div>
+
+<div class="box">
+<h2>Contact Information</h2>
+
+<p>Email: travelworld@gmail.com</p>
+<p>Phone: +91 XXXXX XXXXX</p>
+<p>Location: Amravati , India</p>
+
+</div>
+
+</div>
+
+<script>
+
+let data = JSON.parse(localStorage.getItem("feedback")) || [];
+
+let total = 0;
+
+data.forEach(d=>{
+total += Number(d.rating);
+});
+
+let avg = 0;
+
+if(data.length>0){
+avg = total / data.length;
+}
+
+document.getElementById("avg").innerHTML =
+"Average Rating : " + avg.toFixed(1) + " ⭐";
+
+document.getElementById("total").innerHTML =
+"Total Reviews : " + data.length;
+
+let stars = "";
+
+for(let i=1;i<=5;i++){
+if(i<=Math.round(avg)){
+stars += "★";
+}else{
+stars += "☆";
+}
+}
+
+document.getElementById("stars").innerHTML =
+"<div class='star'>"+stars+"</div>";
+
+</script>
+
+</body>
+</html>

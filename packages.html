@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Travel Packages</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+font-family:Arial;
+margin:0;
+background:#f4f7fb;
+}
+
+header{
+background:#2c5364;
+color:white;
+padding:15px;
+text-align:center;
+}
+
+.container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+padding:20px;
+}
+
+.card{
+background:white;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.card img{
+width:100%;
+height:180px;
+object-fit:cover;
+}
+
+.content{
+padding:15px;
+text-align:center;
+}
+
+select{
+padding:8px;
+margin-top:10px;
+width:100%;
+}
+
+.price{
+margin-top:10px;
+font-weight:bold;
+}
+
+.btn{
+display:inline-block;
+padding:10px 15px;
+background:#2c5364;
+color:white;
+text-decoration:none;
+border-radius:5px;
+margin-top:10px;
+transition:0.3s;
+}
+
+.btn:hover{
+background:#ff6b6b;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h2>📦 Travel Packages</h2>
+</header>
+
+<div class="container" id="packages"></div>
+
+<script>
+
+const countries=[
+["Paris",17000],
+["Dubai",13000],
+["Bali",11000],
+["London",18000],
+["New York",20000],
+["Singapore",9000],
+["Maldives",15000],
+["Switzerland",22000],
+["Turkey",12000],
+["Japan",19000],
+["Italy",16000],
+["Spain",15000],
+["Thailand",8000],
+["Indonesia",10000],
+["Germany",17000],
+["France",16500],
+["Netherlands",15000],
+["Greece",15500],
+["Canada",21000],
+["Australia",23000]
+];
+
+let html="";
+
+countries.forEach(c=>{
+
+html+=`
+
+<div class="card">
+
+<img src="https://picsum.photos/400/300?random=${Math.random()}">
+
+<div class="content">
+
+<h3>${c[0]}</h3>
+
+<p>₹${c[1]} / day</p>
+
+<select onchange="calc(this)">
+<option value="">Select Days</option>
+<option value="2">2 Days</option>
+<option value="3">3 Days</option>
+<option value="4">4 Days</option>
+<option value="5">5 Days</option>
+<option value="6">6 Days</option>
+<option value="7">7 Days</option>
+</select>
+
+<select onchange="calc(this)">
+<option value="">Number of Persons</option>
+<option value="1">1 Person</option>
+<option value="2">2 Persons</option>
+<option value="3">3 Persons</option>
+<option value="4">4 Persons</option>
+<option value="5">5 Persons</option>
+</select>
+
+<div class="price">Total: ₹0</div>
+
+<a href="registration.html?country=${c[0]}" class="btn">Register</a>
+
+</div>
+</div>
+
+`;
+
+});
+
+document.getElementById("packages").innerHTML=html;
+
+function calc(element){
+
+let card = element.closest(".content");
+
+let selects = card.querySelectorAll("select");
+
+let days = selects[0].value;
+let persons = selects[1].value;
+
+let priceText = card.querySelector("p").innerText;
+let price = parseInt(priceText.replace(/[^\d]/g,""));
+
+if(days && persons){
+let total = price * days * persons;
+card.querySelector(".price").innerHTML = "Total: ₹" + total;
+}
+
+}
+
+</script>
+
+</body>
+</html>

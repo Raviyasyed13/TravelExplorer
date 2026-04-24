@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Destinations</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+body{
+background:#f4f7fb;
+}
+
+header{
+background:#2c5364;
+color:white;
+padding:15px;
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+}
+
+nav a{
+color:white;
+margin:8px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+padding:30px;
+}
+
+.card{
+background:white;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 15px 25px rgba(0,0,0,0.2);
+}
+
+.card img{
+width:100%;
+height:170px;
+object-fit:cover;
+}
+
+.card h3{
+padding:10px;
+}
+
+.card p{
+padding:0 10px 10px;
+color:gray;
+font-size:14px;
+}
+
+.btn{
+display:inline-block;
+margin:8px;
+padding:8px 12px;
+background:#2c5364;
+color:white;
+text-decoration:none;
+border-radius:5px;
+font-size:14px;
+}
+
+footer{
+background:#222;
+color:white;
+text-align:center;
+padding:15px;
+margin-top:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h2>🌍 Destinations</h2>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="destinations.html">Destinations</a>
+<a href="packages.html">Packages</a>
+<a href="wishlist.html">Wishlist</a>
+<a href="contact.html">Contact</a>
+</nav>
+</header>
+
+<div class="container">
+
+<!-- Cards -->
+<script>
+
+const countries = [
+"Paris","Dubai","Bali","London","New York","Singapore",
+"Maldives","Switzerland","Turkey","Japan","Italy","Spain",
+"Thailand","Indonesia","Germany","France","Netherlands",
+"Greece","Canada","Australia"
+];
+
+let html="";
+
+countries.forEach(place=>{
+
+html+=`
+<div class="card">
+<img src="https://picsum.photos/400/300?random=${Math.random()}">
+<h3>${place}</h3>
+<p>Explore beautiful places, attractions and travel experiences.</p>
+<a href="destination.html?place=${place.toLowerCase()}" class="btn">Explore</a>
+<a href="packages.html" class="btn">View Packages</a>
+</div>
+`;
+
+});
+
+document.write(html);
+
+</script>
+
+</div>
+
+<footer>
+© 2026 Travel Explorer
+</footer>
+
+</body>
+</html>

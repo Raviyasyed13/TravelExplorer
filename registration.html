@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Travel Registration</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f7fb;
+margin:0;
+}
+
+header{
+background:#2c5364;
+color:white;
+padding:15px;
+text-align:center;
+}
+
+.container{
+width:700px;
+margin:20px auto;
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+input,select,textarea{
+width:100%;
+padding:10px;
+margin:8px 0;
+border:1px solid #ccc;
+border-radius:5px;
+}
+
+button{
+background:#2c5364;
+color:white;
+border:none;
+padding:12px;
+width:100%;
+cursor:pointer;
+font-size:16px;
+border-radius:5px;
+}
+
+button:hover{
+background:#1e3c72;
+}
+
+.section{
+margin-top:20px;
+padding-top:10px;
+border-top:1px solid #ddd;
+}
+
+img{
+width:100%;
+border-radius:10px;
+margin-bottom:15px;
+}
+
+.success{
+background:#d4edda;
+padding:10px;
+margin-top:15px;
+display:none;
+border-radius:5px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h2>✈ Travel Registration Form</h2>
+</header>
+
+<div class="container">
+
+<img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e">
+
+<p>
+Use this form to register for your vacation. Please register your legal name as it will appear on your passport.
+</p>
+
+<div class="section">
+<h3>Personal Information</h3>
+
+<input type="text" id="name" placeholder="Full Name" required>
+
+<input type="date" id="dob">
+
+<input type="email" id="email" placeholder="Email" required>
+
+<input type="text" id="phone" placeholder="Phone Number" required>
+
+<textarea id="address" placeholder="Address"></textarea>
+
+</div>
+
+<div class="section">
+<h3>Guest Information</h3>
+
+<input type="text" id="guest2" placeholder="Guest #2 Full Name">
+<input type="date">
+
+<input type="text" id="guest3" placeholder="Guest #3 Full Name">
+<input type="date">
+
+<input type="text" id="guest4" placeholder="Guest #4 Full Name">
+<input type="date">
+
+</div>
+
+<div class="section">
+<h3>Travel Information</h3>
+
+<select id="transport">
+<option>Select Transport</option>
+<option>Flight</option>
+<option>Cruise</option>
+<option>Train</option>
+</select>
+
+<select id="room">
+<option>Select Room Type</option>
+<option>Standard</option>
+<option>Deluxe</option>
+<option>Suite</option>
+</select>
+
+<select id="meal">
+<option>Select Meal Plan</option>
+<option>Breakfast Only</option>
+<option>Half Board</option>
+<option>Full Board</option>
+</select>
+
+<select id="insurance">
+<option>Travel Insurance</option>
+<option>Yes</option>
+<option>No</option>
+</select>
+
+<textarea id="request" placeholder="Special Request"></textarea>
+
+<textarea id="emergency" placeholder="Emergency Contact Details"></textarea>
+
+</div>
+
+<div class="section">
+
+<h3>Agreement</h3>
+
+<p>
+I acknowledge that I have read this registration form completely and the information I provided is accurate. 
+All payments must be made before travel date.
+</p>
+
+<select id="agree">
+<option>Do you agree?</option>
+<option>Yes</option>
+<option>No</option>
+</select>
+
+</div>
+
+<button onclick="submitForm()">Submit Registration</button>
+
+<div class="success" id="successMsg">
+Registration Successful! Redirecting...
+</div>
+
+</div>
+
+<script>
+
+// Auto fill if already registered
+window.onload=function(){
+
+let user=JSON.parse(localStorage.getItem("lastUser"));
+
+if(user){
+name.value=user.name;
+email.value=user.email;
+phone.value=user.phone;
+address.value=user.address;
+}
+
+}
+
+// submit
+function submitForm(){
+
+let name=document.getElementById("name").value;
+let email=document.getElementById("email").value;
+let phone=document.getElementById("phone").value;
+let address=document.getElementById("address").value;
+
+let transport=document.getElementById("transport").value;
+let room=document.getElementById("room").value;
+let meal=document.getElementById("meal").value;
+
+if(name=="" || email=="" || phone==""){
+alert("Please fill required fields");
+return;
+}
+
+// booking id
+let bookingID="TR"+Math.floor(Math.random()*100000);
+
+// get existing registrations
+let all=JSON.parse(localStorage.getItem("registrations")) || [];
+
+let data={
+bookingID,
+name,
+email,
+phone,
+address,
+transport,
+room,
+meal,
+date:new Date().toLocaleDateString()
+};
+
+all.push(data);
+
+localStorage.setItem("registrations",JSON.stringify(all));
+
+// save last user
+localStorage.setItem("lastUser",JSON.stringify({
+name,email,phone,address
+}));
+
+document.getElementById("successMsg").style.display="block";
+
+// redirect
+setTimeout(()=>{
+window.location.href="policy.html";
+},1500);
+
+}
+
+</script>
+
+</body>
+</html>
